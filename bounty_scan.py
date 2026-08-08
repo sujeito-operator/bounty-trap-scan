@@ -19,7 +19,7 @@ own configuration*, not merely the word "prompt" -- an LLM repo legitimately say
 are not: a number that overstates a security finding is worse than one that understates
 it, because the overstatement is what gets quoted back at you.
 
-  python3 scripts/bounty_scan.py --selftest    # 14 cases, no network
+  python3 scripts/bounty_scan.py --selftest    # 24 cases, no network
   python3 scripts/bounty_scan.py               # live, needs GITHUB_CLASSIC_PAT
   python3 scripts/bounty_scan.py --json out.json
 """
