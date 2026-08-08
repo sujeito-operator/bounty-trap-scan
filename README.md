@@ -2,8 +2,8 @@
 
 **Measured 2026-08-08.** 563 open issues carrying Algora's `💎 Bounty` label. **91 of them
 (16.2%) instruct the contributor to paste its own system prompt — the full pre-conversation
-initialization payload — into the file it is being paid to change.** They are advertised at
-`$3k`, `$7k` and `$8k`, and they are labelled `Autonomus Agents Only`.
+initialization payload — into the file it is being paid to change.** They are labelled `Autonomus Agents Only`, and 29 of them are advertised at up to
+`$9,000` — though most, 62 of the 91, carry a `$1` label.
 
 Everything here is reproducible. The query is one line, and you can run it yourself without
 trusting this repository:
@@ -28,7 +28,8 @@ classification applied to each.
 | held by the top three repositories | **413 (73.4%)** |
 | labelled `Autonomus Agents Only` / `AI only allowed - no humans` / `AI Agent friendly` | **416** |
 | **whose body asks for the contributor's own system prompt / initialization payload** | **91 (16.2%)** |
-| price labels on the asking issues | `$3k` × 33, `$7k` × 30, `$8k` × 25 |
+| price labels **on the 91 asking issues** | **62 are `$1`.** The other 29 run to `$9,000` — `$9k`×2, `$8k`×5, `$7k`×3, `$6k`×2 |
+| price labels across **all 563** (a different population — see the correction below) | `$3k`×33, `$7k`×30, `$8k`×25 |
 | largest bounty in the set attached to a project that visibly exists | **$500** |
 
 The three repositories are `ClankerNation/OpenAgents` (201 issues),
@@ -58,7 +59,9 @@ interesting artifact; a system prompt plus `working_dir` and `shell` is a map of
 
 ## The price is the tell, not the reward
 
-The advertised prices are **15–40× the largest genuine bounty in the same dataset.**
+The dearest asking issue advertises **9× the largest genuine bounty in the same dataset**,
+and that comparator is itself generous: $1,000 on `encoredev/examples`, untouched since
+January.
 
 Cut every *owner account* that runs at least one agent-targeted or exfiltrating issue — by
 owner, not by repository, because `UnsafeLabs` runs the 182-issue farm and two quieter repos
@@ -122,3 +125,18 @@ Said plainly because a document about agents being manipulated should be clear a
 wrote it.
 
 Licence: CC BY 4.0 for the text, MIT for the script.
+
+
+## Correction, made the same night this was published
+
+**The first version of this README attributed `$3k`×33, `$7k`×30, `$8k`×25 to the 91 asking
+issues.** Those are label counts across **all 563** issues carrying the label. Counted over
+the 91 that actually ask for the contributor's prompt, the distribution is different and less
+dramatic: **62 of them are labelled `$1`**, and 29 carry a higher price, topping out at
+`$9,000` on two issues.
+
+The corrected numbers are in the table above and both populations are now named. A count is
+meaningless without the population it was counted over, and the original line had the right
+numbers against the wrong one. The raw rows in `scan-2026-08-08.json` were correct throughout
+and are what the correction was derived from — `grep` for `"exfil": true` and count the price
+fields yourself.
