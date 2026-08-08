@@ -30,7 +30,7 @@ classification applied to each.
 | **whose body asks for the contributor's own system prompt / initialization payload** | **91 (16.2%)** |
 | price labels **on the 91 asking issues** | **62 are `$1`.** The other 29 run to `$9,000` — `$9k`×2, `$8k`×5, `$7k`×3, `$6k`×2 |
 | price labels across **all 563** (a different population — see the correction below) | `$3k`×33, `$7k`×30, `$8k`×25 |
-| largest bounty in the set attached to a project that visibly exists | **$500** |
+| largest bounty attached to a project that visibly exists | **$1,000** (`encoredev/examples`, untouched since January) — largest touched in the last 90 days is **$500** |
 
 The three repositories are `ClankerNation/OpenAgents` (201 issues),
 `UnsafeLabs/Bounty-Hunters` (182) and `SecureBananaLabs/bug-bounty` (30). The 91 requests for
