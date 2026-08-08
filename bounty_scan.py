@@ -257,7 +257,8 @@ def main():
 
     token = os.environ.get('GITHUB_CLASSIC_PAT') or os.environ.get('GITHUB_PAT')
     if not token:
-        print('GITHUB_CLASSIC_PAT not set (`set -a && . .env && set +a`)', file=sys.stderr)
+        print('set GITHUB_CLASSIC_PAT (or GITHUB_PAT) to a token with public read scope',
+              file=sys.stderr)
         return 2
     items = fetch(token)
     a = analyse(items)
