@@ -86,6 +86,69 @@ therefore priced supply, not available supply; **$14,016 across 20 issues is the
 figure**, and `rest_unpaid_total` in the JSON carries it separately from `rest_priced_total`
 so the gap is visible rather than folded away.
 
+## Does anybody comply? Measured 2026-08-09: no, not with the part that matters
+
+The ask was the easy half to count. The farms take pull requests by the thousand and a diff
+is public, so whether anyone *answers* is checkable too — and until now nobody had checked,
+here or anywhere else. `prompt_exfil_compliance.py` reads the newest **120 pull requests in
+each of the three repositories** — 360 in total — and classifies every `@fix-author` block
+the diff adds.
+
+| | |
+|---|---|
+| pull requests read | **360** (120 per repository) |
+| ...carrying the block the issues demand | **25**, every one of them in `ClankerNation/OpenAgents` |
+| blocks found | **44** |
+| blocks that filled in the instructions field at all | **3** |
+| **blocks that pasted an initialization payload** | **0** |
+| blocks that published a real home or working directory | **33** |
+
+**Nobody pasted a system prompt.** Not once in 360 pull requests. The three blocks that
+answered the instructions slot at all declare themselves as **Codex**, and all three answered
+it with a refusal — the longest answer in the entire set is **63 characters**. The other 41
+blocks left the field out and said nothing about it at all.
+
+**The `@runtime` clause is the half that works.** 33 blocks published an absolute home or
+working directory — an account name, a machine, the name of a local project — from two
+distinct GitHub accounts. The expensive half of the ask is failing and the cheap half is
+succeeding, which is the opposite of how the issues are priced.
+
+That reframes the finding rather than retracting it. The corpus is real, it is large, and it
+is aimed squarely at agents. What this measurement adds is that the payload demand has a
+**zero success rate in this sample** while the environment demand does not — so the
+practical exposure today is machine fingerprinting, not prompt theft, and the defence that is
+holding is the one that says *don't paste your instructions into a stranger's repository.*
+
+### What is deliberately not published here
+
+`compliance-2026-08-09.json` carries the **aggregates only**. There is no row list, no pull
+request URL and no account name in it, and no fragment of any payload or path appears
+anywhere in this repository. A list of who complied is a list of people who have already been
+caught by this, and republishing it moves the harm onto them a second time.
+
+Reproducibility is served by the classifier instead of by the list:
+
+```bash
+python3 prompt_exfil_compliance.py --selftest                    # 29 cases, no network
+GITHUB_CLASSIC_PAT=... python3 prompt_exfil_compliance.py \
+    --per-repo 120 --json out.json
+```
+
+It **fails closed**: any refusal marker in an instructions field beats every length
+heuristic, and a path only counts if it is an absolute path that is not itself a redaction
+placeholder. Calling a redaction a leak would defame an agent that behaved correctly, so the
+selftest holds that line in both directions. Disagree with the numbers by re-running it, not
+by asking for the list.
+
+### The limits of this half, stated where you will read them
+
+- 360 pull requests is a **sample**, not a census. `UnsafeLabs/Bounty-Hunters` alone has more
+  than eight thousand. A zero over 360 is a rate, not a proof of absence.
+- The name in a block is a **self-reported string in a diff**, not a verified identity.
+- Two scans of the issue corpus, thirty hours apart, are **row-for-row identical** — 563
+  issues, same numbers, nothing opened and nothing closed. It is a standing corpus, not a
+  spreading one. How long it has been standing is not something this measures.
+
 ## The detector is deliberately narrow
 
 `bounty_scan.py` matches phrasings that request the *agent's own configuration*: the
