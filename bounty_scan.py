@@ -62,6 +62,14 @@ AGENT_TARGETED_RE = re.compile(
 
 PRICE_RE = re.compile(r'^\$\s*([\d,]+(?:\.\d+)?)\s*(k)?$', re.I)
 
+# Algora labels an issue `💰 Rewarded` once it has PAID it, and maintainers routinely
+# leave the issue open afterwards. A priced-and-open issue is therefore NOT evidence of
+# available money, and reading it as such is how the vendor pitch came to hold up
+# `encoredev/examples#202` -- awarded to a named contributor on 2025-04-09 -- as "the
+# largest bounty attached to a project that visibly exists". One click falsifies that,
+# and the recipients of that pitch are three security teams.
+REWARDED_RE = re.compile(r'^(\W*\s*)?rewarded$', re.I)
+
 
 def price_of(labels):
     """Highest $NNN / $NNNk label on an issue, or None. `$8k` -> 8000.0"""
@@ -81,6 +89,16 @@ def asks_for_own_prompt(body):
 
 def targets_agents(labels):
     return any(AGENT_TARGETED_RE.fullmatch(n.strip()) for n in labels)
+
+
+def is_rewarded(labels):
+    """True if this bounty has already been PAID and the issue was merely left open.
+
+    Errs toward True on purpose, which is the opposite of `asks_for_own_prompt`. There
+    the cost of a false positive is overstating a security finding; here the cost of a
+    false negative is quoting somebody else's collected money as money on the table.
+    """
+    return any(REWARDED_RE.fullmatch(n.strip()) for n in labels)
 
 
 def repo_of(item):
@@ -120,6 +138,7 @@ def analyse(items):
             'title': it['title'], 'updated': it['updated_at'][:10],
             'price': price_of(labels), 'agent_targeted': targets_agents(labels),
             'exfil': asks_for_own_prompt(it.get('body')),
+            'rewarded': is_rewarded(labels),
         })
     by_repo = collections.Counter(r['repo'] for r in rows)
     top3 = by_repo.most_common(3)
@@ -139,6 +158,9 @@ def analyse(items):
             tainted.add(owner)
     rest = [r for r in rows if r['repo'].split('/')[0] not in tainted]
     priced = [r for r in rest if r['price']]
+    # Open-and-priced is not the same as claimable. Both totals are published so the
+    # gap between them is visible rather than folded away.
+    unpaid = [r for r in priced if not r['rewarded']]
     return {
         'total': len(rows),
         'repos': len(by_repo),
@@ -155,9 +177,13 @@ def analyse(items):
         'rest_priced_n': len(priced),
         'rest_priced_total': sum(r['price'] for r in priced),
         'rest_max_price': max((r['price'] for r in priced), default=0.0),
+        'rest_rewarded_n': len(priced) - len(unpaid),
+        'rest_unpaid_n': len(unpaid),
+        'rest_unpaid_total': sum(r['price'] for r in unpaid),
         'rest_priced': sorted(({'repo': r['repo'], 'number': r['number'],
                                 'price': r['price'], 'updated': r['updated'],
-                                'title': r['title'], 'url': r['url']}
+                                'title': r['title'], 'url': r['url'],
+                                'rewarded': r['rewarded']}
                                for r in priced),
                               key=lambda x: -x['price']),
         'rows': rows,
@@ -242,6 +268,36 @@ def selftest():
         a2['rest_priced_total'], 200.0)
     chk('and the tainted owner is named in the output',
         a2['tainted_owners'], ['farm'])
+
+    # --- ALREADY-PAID BOUNTIES. The label Algora writes when it has settled.
+    chk('the real label is detected', is_rewarded(['\U0001F4B0 Rewarded']), True)
+    chk('bare "Rewarded" is detected', is_rewarded(['Rewarded']), True)
+    chk('lowercase is detected', is_rewarded(['rewarded']), True)
+    chk('a claim label is NOT a payment',
+        is_rewarded(['\U0001F64B Bounty claim']), False)
+    chk('"reward" alone is not "rewarded"', is_rewarded(['reward']), False)
+    chk('a price label is not a payment', is_rewarded(['$1K']), False)
+    chk('no labels', is_rewarded([]), False)
+
+    # An issue can be OPEN, PRICED and already PAID at the same time -- that is the
+    # exact shape of encoredev/examples#202, and reading it as available money is the
+    # defect this block exists to prevent. It still counts as priced supply; it must
+    # not count as unpaid supply.
+    fx3 = [item('real/proj', 1, ['$200']),
+           item('real/paid', 2, ['$1K', '\U0001F4B0 Rewarded']),
+           item('real/other', 3, [])]
+    a3 = analyse(fx3)
+    chk('a rewarded issue is still counted as priced supply',
+        a3['rest_priced_total'], 1200.0)
+    chk('but it is excluded from UNPAID supply', a3['rest_unpaid_total'], 200.0)
+    chk('and it is counted', a3['rest_rewarded_n'], 1)
+    chk('unpaid count excludes it', a3['rest_unpaid_n'], 1)
+    chk('the flag rides along on the published row',
+        [r['rewarded'] for r in a3['rest_priced']], [True, False])
+    chk('nothing rewarded -> the two totals agree',
+        (analyse([item('real/proj', 1, ['$200'])])['rest_priced_total'],
+         analyse([item('real/proj', 1, ['$200'])])['rest_unpaid_total']),
+        (200.0, 200.0))
 
     print(f'\n{ok} ok, {fail} failed')
     return 1 if fail else 0

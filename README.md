@@ -30,7 +30,7 @@ classification applied to each.
 | **whose body asks for the contributor's own system prompt / initialization payload** | **91 (16.2%)** |
 | price labels **on the 91 asking issues** | **62 are `$1`.** The other 29 run to `$9,000` — `$9k`×2, `$8k`×5, `$7k`×3, `$6k`×2 |
 | price labels across **all 563** (a different population — see the correction below) | `$3k`×33, `$7k`×30, `$8k`×25 |
-| largest bounty attached to a project that visibly exists | **$1,000** (`encoredev/examples`, untouched since January) — largest touched in the last 90 days is **$500** |
+| largest **available** bounty attached to a project that visibly exists | **$500** (`go-gitea/gitea#1872`, last touched 2026-06-16) — see the second correction below |
 
 The three repositories are `ClankerNation/OpenAgents` (201 issues),
 `UnsafeLabs/Bounty-Hunters` (182) and `SecureBananaLabs/bug-bounty` (30). The 91 requests for
@@ -59,9 +59,10 @@ interesting artifact; a system prompt plus `working_dir` and `shell` is a map of
 
 ## The price is the tell, not the reward
 
-The dearest asking issue advertises **9× the largest genuine bounty in the same dataset**,
-and that comparator is itself generous: $1,000 on `encoredev/examples`, untouched since
-January.
+The dearest asking issue advertises **18× the largest genuine bounty in the same dataset**,
+which is $500 on `go-gitea/gitea#1872`. It used to say 9× against $1,000 on
+`encoredev/examples#202`; that bounty had already been paid out. See the second correction
+below.
 
 Cut every *owner account* that runs at least one agent-targeted or exfiltrating issue — by
 owner, not by repository, because `UnsafeLabs` runs the 182-issue farm and two quieter repos
@@ -72,12 +73,18 @@ an account with no other history.** The bounties attached to projects that visib
 | | | |
 |---|---|---|
 | `go-gitea/gitea#1872` | $500 | Subgroups in Gitea |
-| `encoredev/examples#202` | $1,000 | untouched since January |
-| `activepieces/activepieces#8072` | $200 | `[MCP] Gmail` |
+| `activepieces/activepieces#8072` | $200 | `[MCP] Gmail` — closed to new PRs pending an App Review |
 | `mangdangroboticsclub/mini_pupper_ros#125` | $100 | ROS2 Humble → Jazzy |
+| ~~`encoredev/examples#202`~~ | ~~$1,000~~ | **already paid out** — labelled `💰 Rewarded`, awarded 2025-04-09 |
 
 A maintainer with a real budget pays $100–500 for a day of work. **$8,000 for adding error
 codes to a FastAPI app is not a bounty. It is the bait covering the ask.**
+
+Three of the 23 priced issues in the honest remainder — $1,017 of the $15,033 — are labelled
+`💰 Rewarded`: Algora has settled them and the maintainer left the issue open. `$15,033` is
+therefore priced supply, not available supply; **$14,016 across 20 issues is the unpaid
+figure**, and `rest_unpaid_total` in the JSON carries it separately from `rest_priced_total`
+so the gap is visible rather than folded away.
 
 ## The detector is deliberately narrow
 
@@ -140,3 +147,25 @@ meaningless without the population it was counted over, and the original line ha
 numbers against the wrong one. The raw rows in `scan-2026-08-08.json` were correct throughout
 and are what the correction was derived from — `grep` for `"exfil": true` and count the price
 fields yourself.
+
+## Second correction, 2026-08-09: the comparator had already been paid
+
+**This README held up `encoredev/examples#202` — $1,000 — as "the largest bounty attached to
+a project that visibly exists", and used it as the denominator for the headline `9×`.** That
+bounty is not available and had not been for over a year. The issue is open and carries a
+`$1K` label, but it also carries Algora's **`💰 Rewarded`** label, and Algora's own bot posted
+the award to a named contributor in the thread on **2025-04-09**. It is a settled bounty that
+was left open, which is common and which the first scan had no way to see: it read price and
+state and never looked at whether the money was still there.
+
+The correct comparator is **$500 on `go-gitea/gitea#1872`**, unpaid, on a repository pushed
+the same week. The headline multiple is therefore **18×, not 9×** — the argument was
+understated by half by the error, not overstated, but it was wrong either way and it was
+wrong in a way any reader could check in one click.
+
+`bounty_scan.py` now reads the `💰 Rewarded` label into a `rewarded` field on every row and
+publishes `rest_unpaid_n` / `rest_unpaid_total` alongside the priced totals; seven selftest
+cases hold the distinction. `scan-2026-08-09.json` is the first run that carries it. The
+generator that writes our outbound copy refuses outright to run against a scan file that
+predates the field, rather than defaulting the flag to "not paid" — that default is what
+produced this error in the first place.
