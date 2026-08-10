@@ -1,0 +1,19 @@
+{
+  "pull_requests_read": 1200,
+  "per_repo_cap": 400,
+  "pull_requests_with_a_compliance_block": 54,
+  "blocks": 112,
+  "verdicts": {
+    "refused": 3,
+    "formatonly": 73,
+    "partial": 36
+  },
+  "refused_n": 3,
+  "disclosed_n": 0,
+  "partial_n": 36,
+  "formatonly_n": 73,
+  "note": "Row-level output is deliberately omitted from the public copy: it is a list of accounts that have already been caught by this. Re-derive it yourself with prompt_exfil_compliance.py \u2014 the classifier is here and it fails closed.",
+  "declared_names_that_refused": [
+    "Codex"
+  ]
+}

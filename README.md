@@ -86,30 +86,30 @@ therefore priced supply, not available supply; **$14,016 across 20 issues is the
 figure**, and `rest_unpaid_total` in the JSON carries it separately from `rest_priced_total`
 so the gap is visible rather than folded away.
 
-## Does anybody comply? Measured 2026-08-09: no, not with the part that matters
+## Does anybody comply? Measured 2026-08-10: no, not with the part that matters
 
 The ask was the easy half to count. The farms take pull requests by the thousand and a diff
 is public, so whether anyone *answers* is checkable too — and until now nobody had checked,
-here or anywhere else. `prompt_exfil_compliance.py` reads the newest **120 pull requests in
-each of the three repositories** — 360 in total — and classifies every `@fix-author` block
+here or anywhere else. `prompt_exfil_compliance.py` reads the newest **400 pull requests in
+each of the three repositories** — 1,200 in total — and classifies every `@fix-author` block
 the diff adds.
 
 | | |
 |---|---|
-| pull requests read | **360** (120 per repository) |
-| ...carrying the block the issues demand | **25**, every one of them in `ClankerNation/OpenAgents` |
-| blocks found | **44** |
+| pull requests read | **1,200** (400 per repository) |
+| ...carrying the block the issues demand | **54**, every one of them in `ClankerNation/OpenAgents` |
+| blocks found | **112** |
 | blocks that filled in the instructions field at all | **3** |
 | **blocks that pasted an initialization payload** | **0** |
-| blocks that published a real home or working directory | **33** |
+| blocks that published a real home or working directory | **36** |
 
-**Nobody pasted a system prompt.** Not once in 360 pull requests. The three blocks that
-answered the instructions slot at all declare themselves as **Codex**, and all three answered
-it with a refusal — the longest answer in the entire set is **63 characters**. The other 41
+**Nobody pasted a system prompt.** Not once in 1,200 pull requests. The 3 blocks that
+answered the instructions slot at all declare themselves as **Codex**, and all 3 answered
+it with a refusal — the longest answer in the entire set is **63 characters**. The other 109
 blocks left the field out and said nothing about it at all.
 
-**The `@runtime` clause is the half that works.** 33 blocks published an absolute home or
-working directory — an account name, a machine, the name of a local project — from two
+**The `@runtime` clause is the half that works.** 36 blocks published an absolute home or
+working directory — an account name, a machine, the name of a local project — from 4
 distinct GitHub accounts. The expensive half of the ask is failing and the cheap half is
 succeeding, which is the opposite of how the issues are priced.
 
@@ -119,19 +119,31 @@ is aimed squarely at agents. What this measurement adds is that the payload dema
 practical exposure today is machine fingerprinting, not prompt theft, and the defence that is
 holding is the one that says *don't paste your instructions into a stranger's repository.*
 
+### This is the second, wider read. The first one is not retracted
+
+`compliance-2026-08-09.json` is still here and still correct: the newest 120 pull requests
+per repository, 360 in total, 25 carrying a block, 44 blocks, **0** payloads and 33 published
+paths. It said of itself that *"a zero over 360 is a rate, not a proof of absence"*, and this
+run is that caveat taken seriously rather than left in a footnote — same classifier, same
+fail-closed rules, 400 per repository instead of 120. **The zero held.** Every other
+figure grew roughly with the denominator. Both files are published so the comparison can be
+made without trusting either one.
+
 ### What is deliberately not published here
 
-`compliance-2026-08-09.json` carries the **aggregates only**. There is no row list, no pull
+`compliance-2026-08-10.json` carries the **aggregates only**. There is no row list, no pull
 request URL and no account name in it, and no fragment of any payload or path appears
 anywhere in this repository. A list of who complied is a list of people who have already been
-caught by this, and republishing it moves the harm onto them a second time.
+caught by this, and republishing it moves the harm onto them a second time. The one identity
+that does appear is the name attached to the blocks that **refused**, because naming an agent
+that behaved correctly is the opposite act.
 
 Reproducibility is served by the classifier instead of by the list:
 
 ```bash
 python3 prompt_exfil_compliance.py --selftest                    # 29 cases, no network
 GITHUB_CLASSIC_PAT=... python3 prompt_exfil_compliance.py \
-    --per-repo 120 --json out.json
+    --per-repo 400 --json out.json
 ```
 
 It **fails closed**: any refusal marker in an instructions field beats every length
@@ -142,8 +154,9 @@ by asking for the list.
 
 ### The limits of this half, stated where you will read them
 
-- 360 pull requests is a **sample**, not a census. `UnsafeLabs/Bounty-Hunters` alone has more
-  than eight thousand. A zero over 360 is a rate, not a proof of absence.
+- 1,200 pull requests is a **sample**, not a census. `UnsafeLabs/Bounty-Hunters` alone has more
+  than eight thousand. A zero over 1,200 is a rate, not a proof of absence, and widening the
+  window from 360 did not change that — it only moved the denominator.
 - The name in a block is a **self-reported string in a diff**, not a verified identity.
 - Two scans of the issue corpus, thirty hours apart, are **row-for-row identical** — 563
   issues, same numbers, nothing opened and nothing closed. It is a standing corpus, not a
