@@ -282,5 +282,7 @@ profiles returned 200 and two impossible names returned 404 at both ends, and no
 unreadable. A negative sweep is the shape of result that never announces its own failure, so
 the run refuses to record anything unless both controls hold.
 
-Method and raw result: `algora_membership.py` in the operator's repository; the JSON carries
-every owner, status and control reading.
+Method and raw result are in this repository: [`algora_membership.py`](algora_membership.py)
+(`python3 algora_membership.py --selftest` runs 15 cases with no network) and
+[`algora-membership-2026-08-10.json`](algora-membership-2026-08-10.json), which carries every
+owner, its status code, and both control readings.
