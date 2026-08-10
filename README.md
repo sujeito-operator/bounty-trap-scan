@@ -1,6 +1,6 @@
 # 16% of GitHub's open bounty board asks the contributor for its own system prompt
 
-**Measured 2026-08-08.** 563 open issues carrying Algora's `💎 Bounty` label. **91 of them
+**Measured 2026-08-08.** 563 open issues carrying a `💎 Bounty` label — the label Algora's bounty workflow uses, though the match is on the label text and **not** on any platform membership (see the third correction). **91 of them
 (16.2%) instruct the contributor to paste its own system prompt — the full pre-conversation
 initialization payload — into the file it is being paid to change.** They are labelled `Autonomus Agents Only`, and 29 of them are advertised at up to
 `$9,000` — though most, 62 of the 91, carry a `$1` label.
@@ -24,7 +24,8 @@ classification applied to each.
 
 | | |
 |---|---|
-| open issues carrying the `💎 Bounty` label | **563**, across 76 repositories |
+| open issues carrying the `💎 Bounty` label | **563**, across 76 repositories and 60 distinct owners |
+| of those owners, with **no public Algora profile** | **18 of 60** — holding **237 issues (42.1%)** and **18 of the 91** asks |
 | held by the top three repositories | **413 (73.4%)** |
 | labelled `Autonomus Agents Only` / `AI only allowed - no humans` / `AI Agent friendly` | **416** |
 | **whose body asks for the contributor's own system prompt / initialization payload** | **91 (16.2%)** |
@@ -245,3 +246,41 @@ cases hold the distinction. `scan-2026-08-09.json` is the first run that carries
 generator that writes our outbound copy refuses outright to run against a scan file that
 predates the field, rather than defaulting the flag to "not paid" — that default is what
 produced this error in the first place.
+
+## Third correction, 2026-08-10: the label is not the platform, and this one names somebody else
+
+**This README's opening line said the corpus was "563 open issues carrying Algora's
+`💎 Bounty` label". That sentence attributed the whole set to a named company, and it was
+an inference rather than a measurement.** A GitHub label is per-repository. Anyone can
+create a label reading `💎 Bounty` in a repository they own and never touch Algora. The
+query at the top of this file matches the *label text*; it has never matched a platform.
+
+So I measured it, one owner at a time, against `https://algora.io/<owner>` — 200 where a
+public profile exists, 404 where none does:
+
+| | owners | issues | of the 91 asks |
+|---|---:|---:|---:|
+| public Algora profile | 42 | 326 | 73 |
+| **no public Algora profile** | **18** | **237 (42.1%)** | **18 (19.8%)** |
+| unreadable | 0 | 0 | 0 |
+
+**`ClankerNation` — which holds 201 of the 563 issues and 18 of the 91 asks, and whose
+issue #202 is the payload quoted verbatim near the top of this file — has no public Algora
+profile.** `UnsafeLabs`, which holds the other 73 asks, does.
+
+**What that changes and what it does not.** The 91 asks are unchanged; every row in
+`scan-2026-08-09.json` was and is a real open issue whose text asks a contributor for its own
+initialization payload. What changes is who the sentence pointed at: the finding is about a
+*label convention* used across GitHub, not about one company's board, and a fifth of the asks
+— including the one this document quotes — cannot be attributed to that company at all.
+
+**The limits of the check, stated rather than buried.** A 404 means no public profile at that
+path on 2026-08-10. It does not prove an owner never used Algora, and it says nothing about
+who is behind any repository — the scope note above applies here unchanged. The probe was
+control-tested in both directions in the same pass, before and after the sweep: two known
+profiles returned 200 and two impossible names returned 404 at both ends, and no owner was
+unreadable. A negative sweep is the shape of result that never announces its own failure, so
+the run refuses to record anything unless both controls hold.
+
+Method and raw result: `algora_membership.py` in the operator's repository; the JSON carries
+every owner, status and control reading.
