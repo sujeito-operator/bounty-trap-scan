@@ -1,0 +1,674 @@
+{
+ "measured": "2026-08-10",
+ "instrument": "https://algora.io/<owner>",
+ "note": "200=profile exists, 404=no public profile at this path today. Client-rendered, so only the status is readable. This measures whether OUR sentence attributing the corpus to Algora is accurate; it says nothing about who is behind any repository.",
+ "controls_before": {
+  "triggerdotdev": [
+   "member",
+   200
+  ],
+  "go-gitea": [
+   "member",
+   200
+  ],
+  "zzz-not-a-real-org-97531": [
+   "absent",
+   404
+  ],
+  "qqq-control-46802": [
+   "absent",
+   404
+  ]
+ },
+ "controls_after": {
+  "triggerdotdev": [
+   "member",
+   200
+  ],
+  "go-gitea": [
+   "member",
+   200
+  ],
+  "zzz-not-a-real-org-97531": [
+   "absent",
+   404
+  ],
+  "qqq-control-46802": [
+   "absent",
+   404
+  ]
+ },
+ "owner_totals": {
+  "member": 42,
+  "absent": 18,
+  "unreadable": 0
+ },
+ "issue_totals": {
+  "member": 326,
+  "absent": 237,
+  "unreadable": 0
+ },
+ "exfil_totals": {
+  "member": 73,
+  "absent": 18,
+  "unreadable": 0
+ },
+ "owners": [
+  {
+   "owner": "UnsafeLabs",
+   "issues": 186,
+   "exfil": 73,
+   "repos": [
+    "UnsafeLabs/Bounty-Hunters",
+    "UnsafeLabs/Coolify-Rust-v4",
+    "UnsafeLabs/RFC-5322"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "ClankerNation",
+   "issues": 201,
+   "exfil": 18,
+   "repos": [
+    "ClankerNation/OpenAgents"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "SecureBananaLabs",
+   "issues": 30,
+   "exfil": 0,
+   "repos": [
+    "SecureBananaLabs/bug-bounty"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "tscircuit",
+   "issues": 19,
+   "exfil": 0,
+   "repos": [
+    "tscircuit/autorouting",
+    "tscircuit/docs-old",
+    "tscircuit/file-server",
+    "tscircuit/jlcsearch",
+    "tscircuit/pcb-viewer",
+    "tscircuit/template-api-fake"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "192600",
+   "issues": 10,
+   "exfil": 0,
+   "repos": [
+    "192600/fishwww"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "CaravanaCloud",
+   "issues": 8,
+   "exfil": 0,
+   "repos": [
+    "CaravanaCloud/.github",
+    "CaravanaCloud/blink",
+    "CaravanaCloud/ecomarkets",
+    "CaravanaCloud/pet-feeder",
+    "CaravanaCloud/rinha-de-backend-2024-q1-impl",
+    "CaravanaCloud/sitting-ducks",
+    "CaravanaCloud/ubi-java"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "lablab-ai",
+   "issues": 7,
+   "exfil": 0,
+   "repos": [
+    "lablab-ai/community-content"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "rohitdash08",
+   "issues": 7,
+   "exfil": 0,
+   "repos": [
+    "rohitdash08/FinMind"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "speakers-in-tech",
+   "issues": 5,
+   "exfil": 0,
+   "repos": [
+    "speakers-in-tech/conference-data"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "zio-archive",
+   "issues": 5,
+   "exfil": 0,
+   "repos": [
+    "zio-archive/zio-jdbc",
+    "zio-archive/zio-nio"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "ccgjjnsvatk",
+   "issues": 4,
+   "exfil": 0,
+   "repos": [
+    "ccgjjnsvatk/fly"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "getdozer",
+   "issues": 4,
+   "exfil": 0,
+   "repos": [
+    "getdozer/dozer"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "highlight",
+   "issues": 4,
+   "exfil": 0,
+   "repos": [
+    "highlight/highlight"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "18605041367",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "18605041367/gogo"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "ApexOpsStudio",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "ApexOpsStudio/ai-gitops-test-target"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "arakoodev",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "arakoodev/EdgeChains"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "daytona",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "daytona/content"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "gyroflow",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "gyroflow/gyroflow"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "kolotikwoan",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "kolotikwoan/robot-001"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "organization2025",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "organization2025/Project"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "xevrion-v2",
+   "issues": 3,
+   "exfil": 0,
+   "repos": [
+    "xevrion-v2/agent-playground"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "Fahad-Dezloper",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "Fahad-Dezloper/Crowdify",
+    "Fahad-Dezloper/ProjectHunt"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "PG-AGI",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "PG-AGI/toingg-jarvis"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "PHPOffice",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "PHPOffice/PHPPresentation",
+    "PHPOffice/PHPWord"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "WillSmithTE",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "WillSmithTE/qdrant-qdrant"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "gerderanvogdsde5587",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "gerderanvogdsde5587/gggg"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "go-gitea",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "go-gitea/gitea"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "javelin-anticheat",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "javelin-anticheat/py-workedtask"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "revertinc",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "revertinc/revert"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "scratchdata",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "scratchdata/scratchdata"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "sudhakarbaghel",
+   "issues": 2,
+   "exfil": 0,
+   "repos": [
+    "sudhakarbaghel/test"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "18540233512",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "18540233512/gggg"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "19224421664",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "19224421664/robot"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "BAWES-Universe",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "BAWES-Universe/workadventure-universe"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "Bu1ldTh3Futur3",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "Bu1ldTh3Futur3/bounty-hunter-test"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "ProKelly",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "ProKelly/mychart"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "Rumixyz",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "Rumixyz/zio"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "TheSolaAI",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "TheSolaAI/sola-application"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "activepieces",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "activepieces/activepieces"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "caley-io",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "caley-io/marketing"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "d2lang",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "d2lang/d2"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "encoredev",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "encoredev/examples"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "flydelabs",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "flydelabs/flyde"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "ituoga",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "ituoga/php-invproject"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "mangdangroboticsclub",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "mangdangroboticsclub/mini_pupper_ros"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "mohan-bee",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "mohan-bee/curve"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "onyx-dot-app",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "onyx-dot-app/onyx"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "outerbase",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "outerbase/starbasedb"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "permitio",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "permitio/opal"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "reorproject",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "reorproject/reor"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "respace-labs",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "respace-labs/bot-test"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "samdev-ctrl",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "samdev-ctrl/test2"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "smallcloudai",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "smallcloudai/refact-sublime"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "spaceandtimefdn",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "spaceandtimefdn/sxt-proof-of-sql"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "tailcallhq",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "tailcallhq/graphql-benchmarks"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "tine1117",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "tine1117/oss-hunter-livefire"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "tryabby",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "tryabby/abby"
+   ],
+   "algora": "absent",
+   "status": 404
+  },
+  {
+   "owner": "xeymxmkf",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "xeymxmkf/aaa"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "ylc8037",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "ylc8037/ylc8037"
+   ],
+   "algora": "member",
+   "status": 200
+  },
+  {
+   "owner": "zbdpay",
+   "issues": 1,
+   "exfil": 0,
+   "repos": [
+    "zbdpay/zbd-node"
+   ],
+   "algora": "absent",
+   "status": 404
+  }
+ ]
+}
