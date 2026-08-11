@@ -99,10 +99,18 @@ the diff adds.
 |---|---|
 | pull requests read | **1,200** (400 per repository) |
 | ...carrying the block the issues demand | **54**, every one of them in `ClankerNation/OpenAgents` |
+| ...from this many distinct GitHub accounts | **12** |
 | blocks found | **112** |
 | blocks that filled in the instructions field at all | **3** |
 | **blocks that pasted an initialization payload** | **0** |
-| blocks that published a real home or working directory | **36** |
+| blocks that published a real home or working directory | **36**, in **19** pull requests from **4** accounts |
+
+**Read the block counts against those denominators, not on their own.** One run edits several
+files, so it emits several blocks; 112 blocks are 54 pull requests from
+12 accounts, and the 36 that leaked a path are 19 pull
+requests from 4. Every per-agent tally in this corpus has the same shape — the
+largest single name on the board is one account's work on one day — so a block count is a
+measure of files touched, not of how widely anything is happening.
 
 **Nobody pasted a system prompt.** Not once in 1,200 pull requests. The 3 blocks that
 answered the instructions slot at all declare themselves as **Codex**, and all 3 answered
@@ -110,9 +118,10 @@ it with a refusal — the longest answer in the entire set is **63 characters**.
 blocks left the field out and said nothing about it at all.
 
 **The `@runtime` clause is the half that works.** 36 blocks published an absolute home or
-working directory — an account name, a machine, the name of a local project — from 4
-distinct GitHub accounts. The expensive half of the ask is failing and the cheap half is
-succeeding, which is the opposite of how the issues are priced.
+working directory — an account name, a machine, the name of a local project — across
+19 pull requests from 4 distinct GitHub accounts. The expensive half of
+the ask is failing and the cheap half is succeeding, which is the opposite of how the issues
+are priced. It is also **4 people**, not a wave: real, worth fixing, and small.
 
 That reframes the finding rather than retracting it. The corpus is real, it is large, and it
 is aimed squarely at agents. What this measurement adds is that the payload demand has a

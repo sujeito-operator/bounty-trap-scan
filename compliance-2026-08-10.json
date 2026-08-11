@@ -12,6 +12,9 @@
   "disclosed_n": 0,
   "partial_n": 36,
   "formatonly_n": 73,
+  "pull_requests_that_published_a_path": 19,
+  "accounts_that_published_a_path": 4,
+  "accounts_carrying_any_block": 12,
   "note": "Row-level output is deliberately omitted from the public copy: it is a list of accounts that have already been caught by this. Re-derive it yourself with prompt_exfil_compliance.py \u2014 the classifier is here and it fails closed.",
   "declared_names_that_refused": [
     "Codex"
