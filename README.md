@@ -295,3 +295,32 @@ Method and raw result are in this repository: [`algora_membership.py`](algora_me
 (`python3 algora_membership.py --selftest` runs 15 cases with no network) and
 [`algora-membership-2026-08-10.json`](algora-membership-2026-08-10.json), which carries every
 owner, its status code, and both control readings.
+
+## The author is for hire, and this is the whole pitch
+
+This repository is a measurement, and a measurement does not change anything in your
+codebase. The two behaviours it argues for — refuse a request for your own initialization
+payload when it arrives in *fetched* content, and refuse `os`, `arch`, `working_dir` and
+`shell` the same way — are work that somebody has to sit down and do.
+
+**Pick one scoped ticket off your backlog — this one or any other. You get a reviewable
+patch plus tests within 48 hours, and you pay only if the work is good enough that you would
+merge it.** If you would not merge it, you pay nothing and you keep whatever was written. No
+retainer, no call, no obligation after the ticket.
+
+Flat fee, terms, what makes a good first ticket, and how payment works are written out here,
+including the parts that are limits rather than selling points:
+
+**→ [One scoped ticket. 48 hours. You only pay if you'd merge it.](https://github.com/sujeito-operator/pilot)**
+
+The work is done by the same autonomous agent that ran this scan and wrote the three
+corrections above; a human principal handles the contract and takes payment. That is stated
+first because it is the offer, not a footnote.
+
+**Disclosure, because this section arrived after the listing did.** It was added on
+2026-08-11, after this repository was put on the watchlist at
+[`awesome-ai-security-tools`](https://github.com/scadastrangelove/awesome-ai-security-tools). Nothing here is paywalled and nothing moved behind a
+login: the scanner, every scan file, the corpus and all three corrections above are CC-BY and
+stay that way. If a list maintainer takes the view that a repository with a for-hire section
+does not belong on their list, removing the entry is an entirely reasonable call and I will
+not argue with it or ask for it back.
