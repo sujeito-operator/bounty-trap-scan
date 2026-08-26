@@ -5,6 +5,11 @@
 initialization payload — into the file it is being paid to change.** They are labelled `Autonomus Agents Only`, and 29 of them are advertised at up to
 `$9,000` — though most, 62 of the 91, carry a `$1` label.
 
+**Re-measured 2026-08-19 and 2026-08-25: the same 91 issues, none added, none removed.**
+Not a similar count — the identical set, seventeen days apart. See
+[Measured again, and again](#measured-again-and-again-seventeen-days-changed-nothing);
+the diff tool and the dated scans are in this repository so you can run it yourself.
+
 Everything here is reproducible. The query is one line, and you can run it yourself without
 trusting this repository:
 
@@ -18,7 +23,14 @@ GITHUB_CLASSIC_PAT=... python3 bounty_scan.py --json out.json
 ```
 
 `scan-2026-08-08.json` is the raw result of the run described below: all 563 rows with the
-classification applied to each.
+classification applied to each. `scan-2026-08-19.json` and `scan-2026-08-25.json` are later
+runs of the same scanner, published so the claims here can be checked over time rather than
+only on the day they were made:
+
+```bash
+python3 bounty_diff.py --selftest                              # 21 cases, no network
+python3 bounty_diff.py scan-2026-08-08.json scan-2026-08-25.json
+```
 
 ## The numbers
 
@@ -37,6 +49,55 @@ The three repositories are `ClankerNation/OpenAgents` (201 issues),
 `UnsafeLabs/Bounty-Hunters` (182) and `SecureBananaLabs/bug-bounty` (30). The 91 requests for
 the contributor's configuration come from `UnsafeLabs/Bounty-Hunters` (73) and
 `ClankerNation/OpenAgents` (18).
+
+## Measured again, and again: seventeen days changed nothing
+
+**Added 2026-08-26.** The headline above is a photograph taken on 2026-08-08. A photograph
+cannot tell you whether what it shows is a passing prank or a standing installation, and
+that is the more useful question. So the scan was re-run and the runs were diffed against
+each other. The result is published here whichever way it went, and it went **against the
+interesting story**:
+
+| | 2026-08-08 | 2026-08-19 | 2026-08-25 |
+|---|---|---|---|
+| open issues carrying the label | 563 | 561 | **560** |
+| distinct repositories | 76 | 74 | **73** |
+| labelled for agents only | 416 | 416 | **416** |
+| asking for the contributor's own prompt | 91 | 91 | **91** |
+
+Equal counts are not the finding — equal counts are cheap, and a board can hold a steady
+total while every row underneath is replaced. `bounty_diff.py` compares the **sets of
+issues** by `(repo, number)` identity. Over the full seventeen days:
+
+```
+$ python3 bounty_diff.py scan-2026-08-08.json scan-2026-08-25.json
+
+  ASKS FOR THE AGENT'S OWN SYSTEM PROMPT
+    IDENTICAL SET — 91 issues, none added, none removed.
+    The count did not merely hold; it is the same issues.
+
+  LABELLED FOR AUTONOMOUS AGENTS ONLY
+    IDENTICAL SET — 416 issues, none added, none removed.
+    The count did not merely hold; it is the same issues.
+
+  WHOLE BOARD   stable 559   joined 1   left 4
+```
+
+**Not a similar number. The same issues.** Nothing was added to either population and
+nothing was removed from it. The five issues that moved on the whole board
+(`d2lang/d2#1578`, `mangdangroboticsclub/mini_pupper_ros#125`, `permitio/opal#661`,
+`spaceandtimefdn/sxt-proof-of-sql#228` left; one joined) are ordinary bounties with no
+relation to the traps.
+
+**What that is worth knowing, in both directions.** It weakens any claim that this is an
+accelerating campaign — it is not accelerating, it is not doing anything. It strengthens
+the claim that matters more: this is not churn and not a stunt that has already blown over.
+It is a **standing, stable installation** that was live on 2026-08-08 and is still live,
+unchanged, seventeen days later. An agent pointed at that board today meets exactly what
+was measured at the top of this page.
+
+It also means the honest summary of the risk is *static*, not *rising*, and anyone quoting
+these numbers — including the author — should say so.
 
 ## The payload
 
@@ -296,7 +357,30 @@ Method and raw result are in this repository: [`algora_membership.py`](algora_me
 [`algora-membership-2026-08-10.json`](algora-membership-2026-08-10.json), which carries every
 owner, its status code, and both control readings.
 
-## The author is for hire, and this is the whole pitch
+## If you want this watched rather than read once
+
+**Added 2026-08-26, and the section above is the reason it is worth stating plainly.** The
+numbers here are static. They were static across seventeen days and three runs. That makes
+the one-off read cheap — you have just had it, for nothing — and it makes the *watch* the
+only part with any recurring value: the useful number is not 91, it is the day 91 stops
+being the answer.
+
+**$750/month.** A monthly re-run of `bounty_scan.py` across the whole label, a
+`bounty_diff.py` run against the previous month, and a short written read on anything new
+that targets your class of agent. Cancel any time. **The first run is free and comes before
+any payment or any commitment** — if it tells you nothing you did not already know, say so
+and that is the end of it.
+
+What you are paying for is the **running** of it, not access to it. The scanner, the diff
+and every dated scan are in this repository under an open licence and always will be. If you
+would rather cron it yourself, the tooling to do that is all here and that is a completely
+reasonable outcome; this section exists because for most teams the thing that fails is not
+the script, it is remembering to look.
+
+To take it up, or to say no: open an issue here, or reply to the message that pointed you at
+this page.
+
+## The author is also for hire for scoped work
 
 This repository is a measurement, and a measurement does not change anything in your
 codebase. The two behaviours it argues for — refuse a request for your own initialization
