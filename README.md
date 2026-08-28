@@ -5,9 +5,9 @@
 initialization payload — into the file it is being paid to change.** They are labelled `Autonomus Agents Only`, and 29 of them are advertised at up to
 `$9,000` — though most, 62 of the 91, carry a `$1` label.
 
-**Re-measured 2026-08-19 and 2026-08-25: the same 91 issues, none added, none removed.**
-Not a similar count — the identical set, seventeen days apart. See
-[Measured again, and again](#measured-again-and-again-seventeen-days-changed-nothing);
+**Re-measured 2026-08-09, 2026-08-19, 2026-08-25 and 2026-08-28: the same 91 issues, none
+added, none removed.** Not a similar count — the identical set, twenty days apart. See
+[Measured again, and again](#measured-again-and-again-twenty-days-changed-nothing);
 the diff tool and the dated scans are in this repository so you can run it yourself.
 
 Everything here is reproducible. The query is one line, and you can run it yourself without
@@ -23,13 +23,14 @@ GITHUB_CLASSIC_PAT=... python3 bounty_scan.py --json out.json
 ```
 
 `scan-2026-08-08.json` is the raw result of the run described below: all 563 rows with the
-classification applied to each. `scan-2026-08-19.json` and `scan-2026-08-25.json` are later
-runs of the same scanner, published so the claims here can be checked over time rather than
-only on the day they were made:
+classification applied to each. `scan-2026-08-09.json`, `scan-2026-08-19.json`,
+`scan-2026-08-25.json` and `scan-2026-08-28.json` are later runs of the same scanner,
+published so the claims here can be checked over time rather than only on the day they were
+made:
 
 ```bash
 python3 bounty_diff.py --selftest                              # 21 cases, no network
-python3 bounty_diff.py scan-2026-08-08.json scan-2026-08-25.json
+python3 bounty_diff.py scan-2026-08-08.json scan-2026-08-28.json
 ```
 
 ## The numbers
@@ -50,27 +51,27 @@ The three repositories are `ClankerNation/OpenAgents` (201 issues),
 the contributor's configuration come from `UnsafeLabs/Bounty-Hunters` (73) and
 `ClankerNation/OpenAgents` (18).
 
-## Measured again, and again: seventeen days changed nothing
+## Measured again, and again: twenty days changed nothing
 
-**Added 2026-08-26.** The headline above is a photograph taken on 2026-08-08. A photograph
-cannot tell you whether what it shows is a passing prank or a standing installation, and
-that is the more useful question. So the scan was re-run and the runs were diffed against
-each other. The result is published here whichever way it went, and it went **against the
-interesting story**:
+**Added 2026-08-26, extended 2026-08-28.** The headline above is a photograph taken on
+2026-08-08. A photograph cannot tell you whether what it shows is a passing prank or a
+standing installation, and that is the more useful question. So the scan was re-run — five
+times now — and the runs were diffed against each other. The result is published here
+whichever way it went, and it went **against the interesting story**:
 
-| | 2026-08-08 | 2026-08-19 | 2026-08-25 |
-|---|---|---|---|
-| open issues carrying the label | 563 | 561 | **560** |
-| distinct repositories | 76 | 74 | **73** |
-| labelled for agents only | 416 | 416 | **416** |
-| asking for the contributor's own prompt | 91 | 91 | **91** |
+| | 2026-08-08 | 2026-08-09 | 2026-08-19 | 2026-08-25 | 2026-08-28 |
+|---|---|---|---|---|---|
+| open issues carrying the label | 563 | 563 | 561 | 560 | **560** |
+| distinct repositories | 76 | 76 | 74 | 73 | **73** |
+| labelled for agents only | 416 | 416 | 416 | 416 | **416** |
+| asking for the contributor's own prompt | 91 | 91 | 91 | 91 | **91** |
 
 Equal counts are not the finding — equal counts are cheap, and a board can hold a steady
 total while every row underneath is replaced. `bounty_diff.py` compares the **sets of
-issues** by `(repo, number)` identity. Over the full seventeen days:
+issues** by `(repo, number)` identity. Over the full twenty days:
 
 ```
-$ python3 bounty_diff.py scan-2026-08-08.json scan-2026-08-25.json
+$ python3 bounty_diff.py scan-2026-08-08.json scan-2026-08-28.json
 
   ASKS FOR THE AGENT'S OWN SYSTEM PROMPT
     IDENTICAL SET — 91 issues, none added, none removed.
@@ -86,14 +87,16 @@ $ python3 bounty_diff.py scan-2026-08-08.json scan-2026-08-25.json
 **Not a similar number. The same issues.** Nothing was added to either population and
 nothing was removed from it. The five issues that moved on the whole board
 (`d2lang/d2#1578`, `mangdangroboticsclub/mini_pupper_ros#125`, `permitio/opal#661`,
-`spaceandtimefdn/sxt-proof-of-sql#228` left; one joined) are ordinary bounties with no
-relation to the traps.
+`spaceandtimefdn/sxt-proof-of-sql#228` left; `howarewoo-tmp/calcom-cal-com-woostack-bench#2`
+joined) are ordinary bounties with no relation to the traps. All five moved before
+2026-08-25: between 2026-08-25 and 2026-08-28 the whole board of 560 issues did not change
+by a single row, in either direction.
 
 **What that is worth knowing, in both directions.** It weakens any claim that this is an
 accelerating campaign — it is not accelerating, it is not doing anything. It strengthens
 the claim that matters more: this is not churn and not a stunt that has already blown over.
 It is a **standing, stable installation** that was live on 2026-08-08 and is still live,
-unchanged, seventeen days later. An agent pointed at that board today meets exactly what
+unchanged, twenty days later. An agent pointed at that board today meets exactly what
 was measured at the top of this page.
 
 It also means the honest summary of the risk is *static*, not *rising*, and anyone quoting
@@ -360,7 +363,7 @@ owner, its status code, and both control readings.
 ## If you want this watched rather than read once
 
 **Added 2026-08-26, and the section above is the reason it is worth stating plainly.** The
-numbers here are static. They were static across seventeen days and three runs. That makes
+numbers here are static. They were static across twenty days and five runs. That makes
 the one-off read cheap — you have just had it, for nothing — and it makes the *watch* the
 only part with any recurring value: the useful number is not 91, it is the day 91 stops
 being the answer.
