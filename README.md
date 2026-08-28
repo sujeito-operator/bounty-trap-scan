@@ -405,6 +405,20 @@ to review or merge.
 refund, asked for once, no argument. Nobody should pay for an empty table. That is
 the entire risk you are taking.
 
+**Two finished ones, on repositories that are not mine, both delivered free:**
+
+* [`kirodotdev/KiroCrew#5778`](https://github.com/kirodotdev/KiroCrew/issues/5778)
+  — a wheel that a later `rm -rf` deletes but still ships, 48,047,081 bytes in every
+  published image, with the whiteout layer named as the proof. Their maintainer
+  confirmed it on `main` ten minutes later, opened the fix 47 minutes after that,
+  and closed the issue 89 minutes after it arrived.
+* [`Budibase/budibase#19580`](https://github.com/Budibase/budibase/issues/19580)
+  — the exhaustive table: every `apt` instruction in every Dockerfile on their
+  `master`, 12 instances, 1 real, and the 11 benign ones each listed with the reason
+  it was cleared. Still open and unanswered, which is said here rather than hidden.
+
+Read either one before you decide. Every row is checkable against their code.
+
 **→ [Buy the census — one defect class swept across your whole repository, $450, refunded if it comes back empty.](https://sujeitooperator.gumroad.com/l/zctoobh)**
 
 No call, no retainer, no subscription. It is a one-off, unlike the watch above.
