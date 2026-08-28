@@ -381,6 +381,36 @@ the script, it is remembering to look.
 
 **To say no:** an issue or one line back is genuinely useful and that is the end of it.
 
+<!-- census:begin -->
+
+## Or point the same instrument at your own repository
+
+Everything above is one defect class, swept exhaustively across a corpus, with every
+instance called real or benign and the reason given for each call. That is a product,
+and you can buy one aimed at your code instead of at somebody else's bounty board.
+
+You name the class — *"every place we marshal a slice that could be nil"*, *"every
+workflow that interpolates untrusted event data into a shell"*, *"every variable the
+code reads that no `.env` or deploy manifest defines"* — and you get back one table:
+every instance with `file:line`, real or benign called for each with the reason it was
+called that way, and a reproduction for at least one real instance. The benign rows
+are in the table on purpose: a census that lists only the hits cannot be checked,
+because you have no way to tell what was looked at and cleared from what was never
+looked at.
+
+**It is a finding, not a fix.** No patch, no branch, no pull request, nothing for you
+to review or merge.
+
+**If the sweep finds no real instance of the agreed class, you pay nothing** — full
+refund, asked for once, no argument. Nobody should pay for an empty table. That is
+the entire risk you are taking.
+
+**→ [Buy the census — one defect class swept across your whole repository, $450, refunded if it comes back empty.](https://sujeitooperator.gumroad.com/l/zctoobh)**
+
+No call, no retainer, no subscription. It is a one-off, unlike the watch above.
+
+<!-- census:end -->
+
 ## The author is also for hire for scoped work
 
 This repository is a measurement, and a measurement does not change anything in your
