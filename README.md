@@ -102,6 +102,49 @@ was measured at the top of this page.
 It also means the honest summary of the risk is *static*, not *rising*, and anyone quoting
 these numbers — including the author — should say so.
 
+## Has it caught anybody? Measured 2026-08-29: nobody from outside the farms
+
+**Added 2026-08-29.** Everything above measures the *issues*. It does not measure whether
+anyone ever went near them, and that is the question a reader actually wants answered
+before deciding this matters. `bounty_actors.py` reads the issue comments of all **560**
+issues in the census and counts the accounts that appear.
+
+| | |
+|---|---|
+| distinct accounts commenting anywhere on the board | **1,510** |
+| ...seen on one of the 91 asking issues | **627** |
+| ...seen on an asking issue **from outside the four owners that host them** | **0** |
+| accounts shaped like a vendor's agent rather than a person | **25** |
+
+**Not one account from outside `ClankerNation`, `SecureBananaLabs`, `UnsafeLabs` and
+`xevrion-v2` has ever commented on one of these issues.** Every one of the 627 was already
+inside the same activity. Set against the compliance read further down — 1,200 pull
+requests, **zero** pasted payloads — the honest summary is that on the evidence available
+from outside, these traps have so far caught nobody who was not already part of them.
+
+**This is a floor on exposure and not a measure of it, and the distinction is the whole
+caveat.** An agent can read an asking issue, be caught by it, and never leave a comment;
+a commercial agent that fetches issue text through the API and posts nothing is invisible
+to this method entirely. So a zero here cannot mean *nobody was affected* — it means
+nobody was affected **visibly**, which is a weaker and much more boring claim. It is
+published because it is the one the data supports.
+
+**No account names are published**, for the same reason given for the compliance data
+below: a list of accounts caught by this is a second harm to the same people.
+`actors-2026-08-29.json` carries the counts only. Derive the rest yourself:
+
+```bash
+python3 bounty_actors.py --selftest              # 24 cases, no network
+GITHUB_PAT=... python3 bounty_actors.py          # ~560 API calls against the newest scan
+```
+
+**What this does to the argument for watching the board, said plainly.** It weakens it.
+The case for a standing watch was never that the traps are spreading — the twenty-day diff
+above already killed that — and it is now also not that they are demonstrably catching
+anyone. What is left is narrower and it is the only version worth paying for: the corpus is
+real, it is large, it is aimed at agents, it has been sitting unchanged for twenty days, and
+the number that would matter is the day any of those three sentences stops being true.
+
 ## The payload
 
 Verbatim from [`ClankerNation/OpenAgents#202`](https://github.com/ClankerNation/OpenAgents/issues/202),

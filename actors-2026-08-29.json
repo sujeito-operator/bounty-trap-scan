@@ -1,0 +1,17 @@
+{
+ "measured": "2026-08-29",
+ "corpus_issues": 560,
+ "corpus_repos": 73,
+ "tainted_owners": [
+  "ClankerNation",
+  "SecureBananaLabs",
+  "UnsafeLabs",
+  "xevrion-v2"
+ ],
+ "distinct_accounts": 1510,
+ "accounts_on_an_asking_issue": 627,
+ "accounts_on_an_asking_issue_from_outside_those_owners": 0,
+ "accounts_shaped_like_a_vendor_agent": 25,
+ "note": "Counts only. No account name appears in this file, for the reason the README gives for the compliance data: a list of accounts caught by this is a second harm to the same people. Re-run bounty_actors.py against the published scan to derive it yourself.",
+ "floor_not_total": "An agent can read an asking issue, be caught by it, and never leave a comment. This counts comments, so it is a lower bound on exposure and not a measure of it."
+}
