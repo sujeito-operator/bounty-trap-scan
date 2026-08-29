@@ -5,6 +5,12 @@
 initialization payload — into the file it is being paid to change.** They are labelled `Autonomus Agents Only`, and 29 of them are advertised at up to
 `$9,000` — though most, 62 of the 91, carry a `$1` label.
 
+**The same board also has a second number, measured 2026-08-29 and added below: across every
+priced, unpaid, open bounty on the label, [**1,055 distinct pull requests have been filed and
+four were merged**](#does-the-honest-remainder-actually-pay-measured-2026-08-29-1055-pull-requests-four-merged)
+— a 0.4% merge rate, $151 collectable against $13,916 advertised, with a negative control
+showing the same repositories merge non-bounty work by the thousand.**
+
 **Re-measured 2026-08-09, 2026-08-19, 2026-08-25 and 2026-08-28: the same 91 issues, none
 added, none removed.** Not a similar count — the identical set, twenty days apart. See
 [Measured again, and again](#measured-again-and-again-twenty-days-changed-nothing);
@@ -193,6 +199,123 @@ Three of the 23 priced issues in the honest remainder — $1,017 of the $15,033 
 therefore priced supply, not available supply; **$14,016 across 20 issues is the unpaid
 figure**, and `rest_unpaid_total` in the JSON carries it separately from `rest_priced_total`
 so the gap is visible rather than folded away.
+
+## Does the honest remainder actually pay? Measured 2026-08-29: 1,055 pull requests, four merged
+
+**Added 2026-08-29.** Everything above measures what the board *asks* for. It never asked the
+question a contributor actually cares about: **does the work get paid?**
+
+The section above sorts the label into bait and an honest remainder — the priced issues that
+are not part of an agent farm and have not already been settled. That remainder is the part of
+the board somebody would rationally go and work on. So it was measured from the demand side.
+For every priced, unpaid, open bounty on the label, `bounty_merge_reality.py` counts the pull
+requests filed at it, how many were merged, and how many distinct accounts filed one.
+
+| bounty | advertised | PRs filed | merged | distinct authors | oldest attempt |
+|---|---:|---:|---:|---:|---|
+| [`javelin-anticheat/py-workedtask#2`](https://github.com/javelin-anticheat/py-workedtask/issues/2) | $10,000 | 10 | 0 | 9 | 2025-08-19 |
+| [`rohitdash08/FinMind#144`](https://github.com/rohitdash08/FinMind/issues/144) | $1,000 | 31 | 0 | 30 | 2026-02-20 |
+| [`go-gitea/gitea#1872`](https://github.com/go-gitea/gitea/issues/1872) | $500 | 13 | 0 | 7 | 2025-08-13 |
+| [`rohitdash08/FinMind#76`](https://github.com/rohitdash08/FinMind/issues/76) | $500 | 57 | 0 | 44 | 2026-03-08 |
+| [`rohitdash08/FinMind#121`](https://github.com/rohitdash08/FinMind/issues/121) | $500 | 112 | 0 | 96 | 2026-02-20 |
+| [`rohitdash08/FinMind#133`](https://github.com/rohitdash08/FinMind/issues/133) | $250 | 81 | 0 | 73 | 2026-02-20 |
+| [`rohitdash08/FinMind#130`](https://github.com/rohitdash08/FinMind/issues/130) | $250 | 62 | 0 | 53 | 2026-02-24 |
+| [`activepieces/activepieces#8072`](https://github.com/activepieces/activepieces/issues/8072) | $200 | 30 | 0 | 29 | 2025-06-16 |
+| [`rohitdash08/FinMind#132`](https://github.com/rohitdash08/FinMind/issues/132) | $200 | 63 | 0 | 57 | 2026-02-21 |
+| [`BAWES-Universe/workadventure-universe#1`](https://github.com/BAWES-Universe/workadventure-universe/issues/1) | $150 | 13 | **3** | 7 | 2026-05-15 |
+| [`javelin-anticheat/py-workedtask#4`](https://github.com/javelin-anticheat/py-workedtask/issues/4) | $100 | 39 | 0 | 36 | 2025-08-20 |
+| [`tine1117/oss-hunter-livefire#1`](https://github.com/tine1117/oss-hunter-livefire/issues/1) | $50 | 106 | 0 | 102 | 2026-06-01 |
+| [`arakoodev/EdgeChains#290`](https://github.com/arakoodev/EdgeChains/issues/290) | $50 | 58 | 0 | 56 | 2026-03-07 |
+| [`Bu1ldTh3Futur3/bounty-hunter-test#1`](https://github.com/Bu1ldTh3Futur3/bounty-hunter-test/issues/1) | $50 | 131 | 0 | 116 | 2026-03-30 |
+| [`rohitdash08/FinMind#124`](https://github.com/rohitdash08/FinMind/issues/124) | $50 | 49 | 0 | 45 | 2026-02-20 |
+| [`Fahad-Dezloper/Crowdify#27`](https://github.com/Fahad-Dezloper/Crowdify/issues/27) | $50 | 12 | 0 | 12 | 2026-02-12 |
+| [`Fahad-Dezloper/ProjectHunt#2`](https://github.com/Fahad-Dezloper/ProjectHunt/issues/2) | $10 | 4 | 0 | 4 | 2026-03-29 |
+| [`PG-AGI/toingg-jarvis#13`](https://github.com/PG-AGI/toingg-jarvis/issues/13) | $5 | 15 | 0 | 14 | 2026-06-02 |
+| [`tscircuit/jlcsearch#92`](https://github.com/tscircuit/jlcsearch/issues/92) | $1 | 169 | **1** | 157 | 2025-10-07 |
+
+```
+priced open bounties measured : 19
+distinct PRs filed at them    : 1,055
+of those, MERGED              : 4
+MERGE RATE                    : 0.4%
+bounties with any merge at all: 2 of 19
+USD advertised                : $13,916
+USD a contributor collected   : $151
+```
+
+```bash
+python3 bounty_merge_reality.py --selftest         # 16 cases, no network
+GITHUB_CLASSIC_PAT=... python3 bounty_merge_reality.py
+```
+
+The full reading, every attempt row included, is `merge-reality-2026-08-29.json`.
+
+### The negative control, because a 0.4% merge rate is normally a broken join
+
+That number looks like a bug, and the first thing to do with it is try to break it. The
+control runs the same query shape on the same repositories with **no bounty issue involved**:
+do these projects merge pull requests at all?
+
+```
+$ GITHUB_CLASSIC_PAT=... python3 bounty_merge_reality.py --control
+
+  19731   merged PRs all-time   go-gitea/gitea
+   8624   merged PRs all-time   activepieces/activepieces
+    256   merged PRs all-time   BAWES-Universe/workadventure-universe
+    198   merged PRs all-time   arakoodev/EdgeChains
+    122   merged PRs all-time   tscircuit/jlcsearch
+     18   merged PRs all-time   rohitdash08/FinMind
+      7   merged PRs all-time   PG-AGI/toingg-jarvis
+      5   merged PRs all-time   Fahad-Dezloper/Crowdify
+      1   merged PRs all-time   Fahad-Dezloper/ProjectHunt
+      0   merged PRs all-time   Bu1ldTh3Futur3/bounty-hunter-test
+      0   merged PRs all-time   javelin-anticheat/py-workedtask
+      0   merged PRs all-time   tine1117/oss-hunter-livefire
+```
+
+The join works. **`activepieces` has merged 8,624 pull requests in its life and none of the 30
+filed at its $200 bounty. `gitea` has merged 19,731 and none of the 13 filed at its $500 one.**
+These are healthy, actively-merging projects that simply do not merge bounty pull requests. The
+zero is behaviour, not an artefact.
+
+And three of the repositories have merged **zero pull requests ever, from anyone** —
+`bounty-hunter-test`, `py-workedtask`, `oss-hunter-livefire` — while carrying priced bounties
+that drew **286 attempts from 263 distinct accounts against $10,200 advertised**. Add
+`FinMind`, which has 18 lifetime merges and seven priced bounties that drew **455 pull requests
+for zero merges against $2,750**, and those four absorbed **741 pull requests and paid nothing.**
+
+### What the join does and does not count
+
+A pull request counts as an attempt when the issue number appears as a `#NNN` token in its
+title or body. GitHub's own linked-issue field is not usable here: it is only populated when
+the body uses a closing keyword **and** the author has push access, which almost no bounty
+claimant has, so counting formal links reports roughly zero attempts on issues that visibly
+have sixty.
+
+The textual join therefore **over-counts** an incidental mention of the number and
+**under-counts** a pull request that names the issue only in a comment. Both are small against
+an effect size of 1,055 against 4, and every row is printed and written to the JSON so the call
+can be argued with rather than taken on trust. The counts are also bounded by GitHub search
+returning at most three pages per issue, so a bounty with more than 300 attempts is reported at
+300; none in this pool is near that.
+
+Two figures on this page describe the same pool at different dates and do not match: the
+`$14,016 across 20 issues` quoted further up is from the 2026-08-10 reading, and the priced,
+unpaid, open pool has been **19 rows worth $13,916** in both the 2026-08-25 and 2026-08-28
+scans. The label lost a row; nothing was reclassified to make a number nicer.
+
+### What to take from it
+
+The two halves of this page are the same board seen from opposite ends. One end asks an
+autonomous agent to publish its own configuration. The other takes its work — 1,055 pull
+requests, from close to a thousand distinct accounts, the oldest filed in August 2025 — and
+merges four of them.
+
+Neither half needs the other to be true, and neither is an accusation of fraud: a maintainer is
+entitled to reject every patch they are sent, and some of these 1,055 are certainly bad. But
+**a posted price is not evidence that the work behind it gets paid**, and on this label it is
+close to evidence of the opposite. If you are pointing an agent at a bounty board — or paying
+for the compute that lets it file — that is the number to price against.
 
 ## Does anybody comply? Measured 2026-08-10: no, not with the part that matters
 
