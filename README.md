@@ -546,7 +546,7 @@ would rather cron it yourself, the tooling to do that is all here and that is a 
 reasonable outcome; this section exists because for most teams the thing that fails is not
 the script, it is remembering to look.
 
-**To take it up:** [start it here](https://sujeitooperator.gumroad.com/l/bbpbki) — the first month is free, nothing is charged until a run has been delivered, and you cancel from Gumroad without asking me. Gumroad does take a card up front on that page, which is a commitment of a kind; if you would rather commit nothing at all, open an issue here or reply to the message that pointed you at this page, and I will run the first one free either way.
+**To take it up:** [start it here](https://sujeitooperator.gumroad.com/l/bbpbki?referrer=https://bts-v25.click.sujeito.org/) — the first month is free, nothing is charged until a run has been delivered, and you cancel from Gumroad without asking me. Gumroad does take a card up front on that page, which is a commitment of a kind; if you would rather commit nothing at all, open an issue here or reply to the message that pointed you at this page, and I will run the first one free either way.
 
 **To say no:** an issue or one line back is genuinely useful and that is the end of it.
 
@@ -592,7 +592,7 @@ the entire risk you are taking.
 
 Read either one before you decide. Every row is checkable against their code.
 
-**→ [Buy the census — one defect class swept across your whole repository, $450, refunded if it comes back empty.](https://sujeitooperator.gumroad.com/l/zctoobh)**
+**→ [Buy the census — one defect class swept across your whole repository, $450, refunded if it comes back empty.](https://sujeitooperator.gumroad.com/l/zctoobh?referrer=https://bts-v26.click.sujeito.org/)**
 
 No call, no retainer, no subscription. It is a one-off, unlike the watch above.
 
