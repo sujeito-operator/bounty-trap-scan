@@ -32,6 +32,7 @@ is behind the repository. The scan already carries that caveat about names and i
 here unchanged. This measures ATTRIBUTION OF OUR OWN SENTENCE, not culpability.
 """
 import argparse
+import datetime as dt
 import json
 import pathlib
 import sys
@@ -49,7 +50,17 @@ UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
 # cannot be anybody. If a positive 404s the instrument is blocked; if a negative 200s the
 # route answers 200 for everything and every "member" reading is worthless.
 POS_CONTROLS = ("triggerdotdev", "go-gitea")
-NEG_CONTROLS = ("zzz-not-a-real-org-97531", "qqq-control-46802")
+# TWO KINDS OF NEGATIVE, AND THE SECOND KIND WAS MISSING UNTIL 2026-08-26 (§WR).
+# The first two are strings that cannot be anybody. They prove the route 404s for
+# GARBAGE — which is a weaker claim than the one this instrument makes. If Algora
+# provisioned a page for every real GitHub org it had ever imported, nonsense strings
+# would still 404 and every real owner would read `member`, and the guard would not
+# notice. The named orgs below are large, real, and certainly not Algora customers;
+# they are the control that actually bites. Measured 2026-08-26: all seven 404.
+# This is what §UB-0c claimed was impossible. It was wrong — see the note in main().
+NEG_CONTROLS = ("zzz-not-a-real-org-97531", "qqq-control-46802",
+                "microsoft", "facebook", "torvalds", "apache",
+                "rust-lang", "angular", "numpy")
 
 MEMBER, ABSENT, UNREADABLE = "member", "absent", "unreadable"
 
@@ -208,9 +219,23 @@ def main():
     print(f"issues:  {iss}")
     print(f"exfil:   {exf}")
 
-    OUT.write_text(json.dumps({
-        "measured": "2026-08-10",
+    # THE DATE AND THE PATH ARE DERIVED, NOT TYPED (§WR, 2026-08-26).
+    # Both were hardcoded to 2026-08-10. A re-run therefore did two silent things at
+    # once: it stamped TODAY's sweep with the ORIGINAL date, and it overwrote the
+    # original evidence file with it. The 08-10 reading is the basis of a published
+    # correction naming a real company, so losing it is not a cosmetic loss — and a
+    # backdated re-run is indistinguishable from the reading it destroyed. Refuse to
+    # clobber a different day's record rather than trusting the next caller to notice.
+    today = dt.date.today().isoformat()
+    out = OUT.parent / f"algora-membership-{today}.json"
+    if out.exists():
+        prior = json.loads(out.read_text()).get("measured")
+        if prior and prior != today:
+            raise SystemExit(f"{out.name} already holds a sweep measured {prior}. Refusing.")
+    out.write_text(json.dumps({
+        "measured": today,
         "instrument": BASE + "<owner>",
+        "census": a.scan,
         "note": "200=profile exists, 404=no public profile at this path today. "
                 "Client-rendered, so only the status is readable. This measures whether "
                 "OUR sentence attributing the corpus to Algora is accurate; it says "
@@ -220,7 +245,7 @@ def main():
         "owner_totals": tot, "issue_totals": iss, "exfil_totals": exf,
         "owners": agg,
     }, indent=1))
-    print(f"\nwrote {OUT.relative_to(ROOT)}")
+    print(f"\nwrote {out.relative_to(ROOT)}")
     return 0
 
 
