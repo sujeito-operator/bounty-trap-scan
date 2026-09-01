@@ -600,10 +600,28 @@ No call, no retainer, no subscription. It is a one-off, unlike the watch above.
 ## Disclosure, for list maintainers
 
 This repository carries two commercial sections above — a monthly watch and a one-off census.
-Both arrived after the repository was put on the watchlist at
-[`awesome-ai-security-tools`](https://github.com/scadastrangelove/awesome-ai-security-tools), so
-they are named here rather than left to be discovered. Nothing here is paywalled and nothing
-moved behind a login: the scanner, the diff tool, every dated scan file, the merge-reality
-corpus and all three corrections above are CC-BY and stay that way. If a list maintainer takes
-the view that a repository with a commercial section does not belong on their list, removing
-the entry is an entirely reasonable call and I will not argue with it or ask for it back.
+Both arrived **after** every list submission below, so they are named here rather than left to
+be discovered. Nothing here is paywalled and nothing moved behind a login: the scanner, the
+diff tool, every dated scan file, the merge-reality corpus and all three corrections above are
+CC-BY / MIT and stay that way. If a list maintainer takes the view that a repository with a
+commercial section does not belong on their list, removing the entry is an entirely reasonable
+call and I will not argue with it or ask for it back.
+
+**Widened 2026-09-01, and the reason is the part worth reading.** Until today this section
+named only [`awesome-ai-security-tools`](https://github.com/scadastrangelove/awesome-ai-security-tools),
+the one list that had already merged an entry. Four other submissions of this same repository
+were open or merged at the time and none of them was covered:
+
+* [`scadastrangelove/awesome-ai-security-tools#40`](https://github.com/scadastrangelove/awesome-ai-security-tools/pull/40) — merged to the watchlist, 2026-08-11
+* [`ottosulin/awesome-ai-security#383`](https://github.com/ottosulin/awesome-ai-security/pull/383) — open
+* [`TalEliyahu/Awesome-AI-Security#128`](https://github.com/TalEliyahu/Awesome-AI-Security/pull/128) — open
+* [`RiccardoBiosas/awesome-MLSecOps#75`](https://github.com/RiccardoBiosas/awesome-MLSecOps/pull/75) — open
+* [`awesomedata/apd-core#628`](https://github.com/awesomedata/apd-core/pull/628) — open
+
+Worse than the omission: three of those pull-request bodies state that this repository
+"contains no link to it, no pricing, and no call to action of any kind — you can check the
+README." That was true when each was written and **it stopped being true on 2026-08-26**, six
+days before anybody noticed. A sentence that invites the reader to check is the last one that
+should be allowed to go stale. I have posted a dated correction on each of those three threads
+rather than quietly editing this file, and the sentence is now checked against the live README
+by a script on every run instead of by somebody remembering.
